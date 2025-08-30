@@ -3,13 +3,20 @@ const app = express();
 const port = 5000;
 const path = require("path");
 const cors = require("cors");
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
 const postRoutes = require("./routes/postRoutes");
-app.use(cors());
+
+const corsOptions = {
+  origin: "http://localhost:5173",
+  methods: "GET,POST,PUT,DELETE,PATCH,HEAD",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.use(express.json());
 main()
   .then((res) => {
     console.log("mongodb connected successfully  \n");

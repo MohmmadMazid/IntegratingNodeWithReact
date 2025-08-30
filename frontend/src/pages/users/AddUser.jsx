@@ -12,6 +12,13 @@ function AddUser() {
     await createUser(form);
     alert("✅ User added successfully!");
     console.log(form);
+    // fetch("http://localhost:5000/api/users", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(form),
+    // });
   };
 
   return (
